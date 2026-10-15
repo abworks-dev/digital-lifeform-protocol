@@ -1,0 +1,35 @@
+---
+id: account-example
+type: account
+title: 待填写
+status: draft
+source: unknown
+updated: unknown
+confirmed_by: unknown
+confirmed_at: unknown
+links: []
+---
+
+# 已确认事实
+
+平台: unknown
+
+用途: unknown
+
+所有者: unknown
+
+管理者: unknown
+
+身份 ID: unknown
+
+项目 ID: unknown
+
+operational_state: unknown
+
+# 建议（不是事实或授权）
+
+待讨论。
+
+# 未知项与待确认变更
+
+列明缺口，不能凭推测补齐。

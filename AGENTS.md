@@ -6,7 +6,7 @@
 
 ## 当前阶段
 
-仅定位与设计。没有已接受的稳定 schema、运行时或协议兼容承诺。不要为“Protocol”这个名称自动增加服务、数据库、多 Agent、身份认证系统或插件。
+已进入首版模板与手动流程完善阶段。参考 docs/RECORDS.md、docs/QUICKSTART.md 和 workflows/；模板及约定仍为实验草案。没有已接受的稳定 schema、运行时或协议兼容承诺。不要为“Protocol”这个名称自动增加服务、数据库、多 Agent、身份认证系统或插件。
 
 ## 维护规则
 
