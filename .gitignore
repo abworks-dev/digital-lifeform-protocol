@@ -1,0 +1,8 @@
+# Defense in depth only: private workspaces belong outside this repository.
+.env
+.env.*
+!.env.example
+private/
+local/
+*.key
+*.pem
