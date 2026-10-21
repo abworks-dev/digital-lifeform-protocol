@@ -69,8 +69,19 @@ def inspect_text(text, url):
     errors = r'(?:HTTP(?:/\d(?:\.\d)?)?\s+(?:error\s+)?[45]\d\d\b|Error\s*[:(]\s*[45]\d\d\b|(?:^|\n)\s*(?:404 Not Found|403 Forbidden|502 Bad Gateway)\b|Warning:.*(?:[45]\d\d|error)|(?:^|\n)\s*(?:Access Denied|Forbidden|Bad Gateway)\s*$)'
     if re.search(errors, text, re.I | re.M):
         reasons.append('http-error-text')
-    if re.search(r'just a moment|checking your browser|enable javascript|verify you are human|captcha|sign in to continue|请开启.{0,8}javascript|访问验证|安全验证|未找到相关内容|登录后查看|请先登录', body, re.I):
+    # Security terms and headings occur in real recovery policies too.
+    # Require a gate instruction or lack of substantive prose, not a title alone.
+    warnings = []
+    if re.search(r'just a moment|checking your browser|enable javascript|verify you are human|sign in to continue|请开启.{0,8}javascript|未找到相关内容|登录后查看|请先登录', body, re.I):
         reasons.append('shell-or-challenge')
+    elif re.search(r'(?im)^\s*(?:#{1,6}\s*)?请(?:先)?(?:完成|进行)(?:访问验证|安全验证)[\s:：.!！。]*$', body):
+        reasons.append('shell-or-challenge')
+    elif re.search(r'访问验证|安全验证|\bcaptcha\b', body, re.I):
+        remaining = re.sub(r'(?im)^\s*(?:#{1,6}\s*)?(?:访问验证|安全验证|captcha)[\s:：.!！。]*$', '', body)
+        if len(re.sub(r'\s+', '', remaining)) < MIN_BODY_CHARS:
+            reasons.append('shell-or-challenge')
+        else:
+            warnings.append('possible-challenge-mention')
     links = re.findall(r'\[[^\]]*\]\([^)]*\)', body)
     prose = re.sub(r'\[[^\]]*\]\([^)]*\)', '', body)
     if len(links) >= 5 and len(re.sub(r'\s', '', prose)) < MIN_BODY_CHARS:
@@ -79,7 +90,7 @@ def inspect_text(text, url):
         reasons.append('body-too-short')
     return {'raw_text_sha256': raw_hash,
             'sha256': hashlib.sha256(normalized.encode('utf-8')).hexdigest(),
-            'normalized_chars': len(normalized), 'reasons': reasons,
+            'normalized_chars': len(normalized), 'reasons': reasons, 'warnings': warnings,
             'url_evidence': 'matched-envelope' if sources and not 'url-mismatch' in reasons else ('mismatched-envelope' if sources else 'not-provided')}
 
 
@@ -92,7 +103,7 @@ def compare(source, url, current, baseline=None):
         status = 'baseline-needed'
     elif old['reasons']:
         status = 'unreadable'
-    elif old['sha256'] != now['sha256']:
+    elif now['warnings'] or old['warnings'] or old['sha256'] != now['sha256']:
         status = 'review-required'
     else:
         status = 'unchanged-not-current'
@@ -147,6 +158,7 @@ def main(argv=None):
             report['reader_http_status'] = 'not-observed'
         report['checked_at_utc'] = datetime.now(timezone.utc).isoformat()
         report['normalization_version'] = 'body-whitespace-jina-envelope-v1'
+        report['inspection_version'] = 'challenge-context-v2'
         report['output_write_semantics'] = 'exclusive, capture then report; not transactional; earlier output may remain on later failure'
         serialized = json.dumps(report, ensure_ascii=False, indent=2) + '\n'
         if args.capture and current is not None:

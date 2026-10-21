@@ -107,6 +107,42 @@ class SourceChangesTests(unittest.TestCase):
                      '\n'.join('[Navigation](https://example.com/path)' for _ in range(15))]:
             self.assertEqual(CHECK.compare('s', URL, body)['status'], 'unreadable')
 
+    def test_security_terms_in_substantive_policy_are_reviewable(self):
+        for mention in ['找回账号时可能需要完成安全验证。', '协议说明访问验证的用途。',
+                        'The policy describes captcha in account recovery.',
+                        '\n## 安全验证\n' + BODY, '\n## 访问验证\n' + BODY,
+                        '\nCAPTCHA\n' + BODY]:
+            text = BODY * 5 + mention
+            with self.subTest(mention=mention):
+                result = CHECK.compare('s', URL, text)
+                self.assertEqual(result['status'], 'baseline-needed')
+                self.assertEqual(result['current']['reasons'], [])
+                self.assertEqual(result['current']['warnings'], ['possible-challenge-mention'])
+                self.assertTrue(result['requires_human_review'])
+                self.assertFalse(result['authority_updated'])
+                self.assertEqual(CHECK.compare('s', URL, text, text)['status'], 'review-required')
+                self.assertEqual(CHECK.compare('s', URL, BODY, text)['status'], 'review-required')
+
+    def test_explicit_challenge_instructions_still_block_long_pages(self):
+        for gate in ['请先完成安全验证！', '请进行访问验证',
+                     'Checking your browser', 'verify you are human']:
+            with self.subTest(gate=gate):
+                result = CHECK.compare('s', URL, gate + '\n' + BODY * 5)
+                self.assertEqual(result['status'], 'unreadable')
+                self.assertIn('shell-or-challenge', result['current']['reasons'])
+        self.assertEqual(CHECK.compare('s', URL, '安全验证')['status'], 'unreadable')
+
+    def test_cli_reports_inspection_version_and_warning(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'policy.txt'
+            path.write_text(BODY + '找回账号需要安全验证。', encoding='utf-8')
+            code, out, _ = self.run_main(['--source', 's', '--url', URL, '--input', str(path)])
+            self.assertEqual(code, 0)
+            report = json.loads(out)
+            self.assertEqual(report['inspection_version'], 'challenge-context-v2')
+            self.assertEqual(report['normalization_version'], 'body-whitespace-jina-envelope-v1')
+            self.assertEqual(report['current']['warnings'], ['possible-challenge-mention'])
+
     def test_fetch_size_limit(self):
         response = MagicMock()
         response.__enter__.return_value = response
