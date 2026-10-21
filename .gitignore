@@ -6,3 +6,7 @@ private/
 local/
 *.key
 *.pem
+
+# Local public-source captures/reports; review.md remains versionable.
+/evidence/platform-sources/**/*.txt
+/evidence/platform-sources/**/*.json
