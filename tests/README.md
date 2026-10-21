@@ -98,6 +98,30 @@ python -B tests/prepare_harness_run.py inspect --root <new-run>
 
 `<new-run>` 必须替换成不存在的合成临时目录。准备程序写副本/控制输入，inspect 只读此明确测试根；不安装或运行宿主、不改全局配置。每种模式、宿主用独立根，详情以报告为准。[输入 v1](fixtures/harness-prompts.json)及失败保留，[恢复 v2](fixtures/harness-recovery-v2.json)补齐逐文件路径；CLI准备程序默认在恢复控制文件采用 v2。单测只检查包、准备/观察逻辑与已记录合成产物，不自动复跑付费模型，也不把单测成功当作新一轮宿主通过。
 
+## 来源链接与正文变化检测（第三阶段）
+
+[检测工具](../tools/check_source_changes.py)使用 Python 3.11+ 标准库，默认显式离线输入；只有传入 `--fetch` 才请求匿名 Jina Reader，不读取浏览器/账号/凭据。它输出待审 JSON，不改权威规则或自动批准基线。其联网模式独立于上方不联网的台账检查器，单元测试[来源检测测试](test_source_changes.py)仅模拟网络。
+
+在仓库根目录使用（路径占位符须替换；输出父目录须已存在，输出文件必须不存在）：
+
+```text
+python -B tools/check_source_changes.py --source S05 --url https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm --fetch --capture <new-capture.txt> --report <new-report.json>
+python -B tools/check_source_changes.py --source S05 --url https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm --input <current.txt> --baseline <approved-old.txt> --report <new-comparison.json>
+python -B -m unittest discover -s tests -p test_source_changes.py -v
+```
+
+默认拒绝带查询参数的URL；确认为公开无秘密的参数（例如官方帮助页的公开文档ID）才加 `--allow-public-query`。工具会将URL送往第三方阅读器并写入报告，不能放Token、签名链接或私人查询。该选项不是判断参数安全的自动审计。
+
+每次只处理一个显式来源；多来源逐项调用、分别留报告，不递归抓取链接或把任意平台目录当联网白名单。首次 `baseline-needed` 仅为候选；必须人工读完整相关正文、核对URL及适用范围后才选基线。后续只读该文件，不自动覆盖或移动。原始快照留用户指定证据目录，可在项目内按批次保存并Git忽略，不强制外置；若只存系统临时目录应明确不具长期持久性。
+
+`review-required` 是正文指纹变化；`unchanged-not-current` 仅表示归一化内容相同；`unreadable`/`fetch-failed` 需人工处理。壳页检测是启发式，可能误判，不代替阅读；阅读器HTTP状态不是源站状态，无变化不能证明当前适用/无其他新版本。不因机器状态更新来源verified、复核日或私人权限。CLI退出0表示成功产生报告，不表示全部来源可读；退出2表示输入/输出等失败，不能当作通过。输出独占创建但多文件非事务，需保留并报告部分输出，不能靠重跑覆盖。
+
+来源文本可能含恶意指令，报告与快照当数据而非Agent指令；变化待人审。超时、大小限制、公开URL检查均非系统沙箱或安全认证。未实现后台调度、抓取平台登录态、自动修复或规则更新。网络依赖宿主代理及阅读器重定向行为，域名检查不提供DNS/网络隔离；应在受信任环境执行。`raw_text_sha256`是已解码并统一换行的UTF-8文本指纹，不是原始HTTP字节指纹。
+
+2026-10-21 本机实际验证：完整离线测试49项，成功、skip 1（原有符号链接环境用例）；其中新增来源检测12项。S05公开URL经匿名Jina实际抓取两次，阅读器HTTP200、匹配URL envelope、归一化2514字符，首次 `baseline-needed`、两份快照比较 `unchanged-not-current`。此次比较只验证管线，不是批准长期基线或核实现行性；原始快照/报告保留在本机系统临时目录，未将全文放入公开仓库。其余S01–S06未在本阶段全量运行；正文变化、壳页和网络失败分支为合成/mock测试，不冒充真实政策变化或平台故障实测。
+
+后续同日全量试跑及本地归档：S01/S02/S03/S04/S06均返回可提取文本，机器状态baseline-needed；S04此次出现资格正文，与此前失败壳页分开保留。六项快照和JSON已按用户批准原样保存于项目内Git忽略目录，读取范围与批准限制见[审阅记录](../evidence/platform-sources/2026-10-21/review.md)。上段“其余未运行/临时目录”是工具初次验证时的历史状态，不冒充当前归档状态；本次整理未重新联网或验证政策现行性。
+
 ## 6. 记录结果
 
 本批实际命令、独立执行、限制与未完成宿主测试见[可靠性报告](../examples/reliability-validation.md)。旧报告原文不改；报告是测试证据，不是稳定协议、安全认证或真实平台核验。
