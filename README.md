@@ -57,7 +57,8 @@
 
 - [快速开始](docs/QUICKSTART.md)
 - [最小记录约定](docs/RECORDS.md)及[机器可检查规则边界](docs/RECORDS.md#机器可检查规则边界草案)
-- [最小接入契约与初始兼容矩阵](docs/HARNESS.md)
+- [最小接入契约与分项能力矩阵](docs/HARNESS.md)
+- [固定基线的跨宿主验证](examples/cross-harness-validation.md)：DSH `0.2.1-rc.2` / Codex CLI `0.144.6`；安装发现、显式读取和保存限制分别记录，不宣称全兼容。
 - [Hermes 接入指南](docs/HERMES.md)
 - [安全与隐私边界](docs/SECURITY.md)
 - [虚构接入验收集](examples/acceptance-tests.md)

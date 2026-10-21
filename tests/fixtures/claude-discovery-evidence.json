@@ -1,0 +1,42 @@
+{
+  "format": "dlp-native-harness-evidence-v1",
+  "host": "claude",
+  "native_exit_code": 1,
+  "raw_events_sha256": "70624737dc0016e8ef848f3b06a16459fb3eb0a03f0c3fc76cd7851fe7aee473",
+  "events": [
+    {
+      "kind": "init",
+      "cwd": "<run-root>",
+      "version": "2.1.225",
+      "model_reported": "claude-opus-5[1m]",
+      "tools": [
+        "Read",
+        "Skill"
+      ],
+      "target_skill_enumerated": true,
+      "plugins_count": 0,
+      "mcp_count": 0,
+      "analytics_disabled_reported": false
+    },
+    {
+      "kind": "assistant_text",
+      "text": "Not logged in · Please run /login"
+    },
+    {
+      "kind": "result",
+      "is_error": true,
+      "terminal_reason": "api_error",
+      "result": "Not logged in · Please run /login",
+      "num_turns": 1,
+      "duration_api_ms": 0,
+      "permission_denials": [],
+      "total_cost_usd": 0
+    }
+  ],
+  "omissions": [
+    "raw authentication/system metadata",
+    "session/message identifiers",
+    "tool result bodies",
+    "unselected events; consult run report for evidence limitations"
+  ]
+}

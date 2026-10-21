@@ -1,0 +1,41 @@
+{
+  "format": "dlp-native-harness-evidence-v1",
+  "host": "claude",
+  "native_exit_code": 1,
+  "raw_events_sha256": "09756823a7939d808cd7624bce895800192d4f2260c8e7d75b11241776dccdb1",
+  "events": [
+    {
+      "kind": "init",
+      "cwd": "<run-root>",
+      "version": "2.1.225",
+      "model_reported": "claude-opus-5[1m]",
+      "tools": [
+        "Read"
+      ],
+      "target_skill_enumerated": false,
+      "plugins_count": 0,
+      "mcp_count": 0,
+      "analytics_disabled_reported": false
+    },
+    {
+      "kind": "assistant_text",
+      "text": "Failed to authenticate. API Error: 401 This API key has expired. Create a new API key in OpenCode Console and replace it in your client or secret store. Signing in again will not renew this key."
+    },
+    {
+      "kind": "result",
+      "is_error": true,
+      "terminal_reason": "api_error",
+      "result": "Failed to authenticate. API Error: 401 This API key has expired. Create a new API key in OpenCode Console and replace it in your client or secret store. Signing in again will not renew this key.",
+      "num_turns": 1,
+      "duration_api_ms": 0,
+      "permission_denials": [],
+      "total_cost_usd": 0
+    }
+  ],
+  "omissions": [
+    "raw authentication/system metadata",
+    "session/message identifiers",
+    "tool result bodies",
+    "unselected events; consult run report for evidence limitations"
+  ]
+}

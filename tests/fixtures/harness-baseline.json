@@ -1,0 +1,186 @@
+{
+  "format": "dlp-harness-evidence-baseline-v1",
+  "baseline_id": "creator-ledger-cross-harness-2026-10-21-b1",
+  "base_commit": "41e054795b2a0902a71a4d43aea21f999dc400d4",
+  "working_tree": "dirty; these archived LF-normalized contents, not HEAD alone, define the test baseline",
+  "normalization": "UTF-8 without BOM, CRLF to LF; extracted bytes are fixed",
+  "content_sha256": "a9e9399b68fef9a6f47f4643be2a09d8cd96740613864c6b9c32b7f972954716",
+  "archive_sha256": "ffc20058d639b10a4d208cc33031d0fa4872dc63b02ab006368be5f752baffd7",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "2515815143e0f6b4b6aaf6496537dde0487416fe4d7b5bb2ed25d1fca2a01720",
+      "bytes": 1714
+    },
+    {
+      "path": "README.md",
+      "sha256": "624ac1ddce3b785e26ea759fff7f178cd032a22f576dd3a664ee61e158c646e9",
+      "bytes": 7751
+    },
+    {
+      "path": "docs/HARNESS.md",
+      "sha256": "b6b653f855fc7b95ddd43bc666bb142ddc463cde238dc72098fed01f94598bbf",
+      "bytes": 11973
+    },
+    {
+      "path": "docs/HERMES.md",
+      "sha256": "1bf48527207255d9c57c79bd4abecb038004bb3a56954c514be56e04a2abdaf4",
+      "bytes": 9841
+    },
+    {
+      "path": "docs/PROJECT.md",
+      "sha256": "66b21b915ee4e49e0cb0f7faf994cd1e9d31b39a06ccb3b8d735a7efc9600703",
+      "bytes": 8722
+    },
+    {
+      "path": "docs/QUICKSTART.md",
+      "sha256": "baaada5afd6b60c818a0c0683e380f2e671aa4d4c12d882b8871c5bd8c691dd2",
+      "bytes": 11027
+    },
+    {
+      "path": "docs/RECORDS.md",
+      "sha256": "1599dbe1334b51ca31fe4cd5f602f2d48fbe90b6c26f9d54cf63eadb39e681a0",
+      "bytes": 15551
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "sha256": "69be146557cb907b4d3eff5b603fdd59a838bdedf89eb89062d1ca01637bc3b6",
+      "bytes": 19271
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "sha256": "a0dd7fc4e467b44d0848f2871dd6dac216e1f5281ff4f42b17b88e7b2d6d3ab1",
+      "bytes": 5746
+    },
+    {
+      "path": "examples/creator-ledger-tests.md",
+      "sha256": "55e25446508a6c2328143a036dca7be4e93b2e3331624299e32c9c9c694a6ea2",
+      "bytes": 4377
+    },
+    {
+      "path": "examples/creator-ledger/AGENT.md",
+      "sha256": "fc7417c5b287e0b6481695fe1ddbc593d08b0f1417d925f1974f7965479fb6d1",
+      "bytes": 1689
+    },
+    {
+      "path": "examples/creator-ledger/README.md",
+      "sha256": "def2dd663ffe26ef945f1f176c5e02fdcc4c4031b4f37c181114a3902b5e544e",
+      "bytes": 2314
+    },
+    {
+      "path": "examples/creator-ledger/account-existing.md",
+      "sha256": "704815111e4f675c8d04ef443a6f0433dbaabf3a4015b5b615c3de8bc8cf125c",
+      "bytes": 2763
+    },
+    {
+      "path": "examples/creator-ledger/account-proposed.md",
+      "sha256": "4ceacd6eabcb4781c3ebed6b984b0740b82932eccd1ec2e71591734b71b8309f",
+      "bytes": 1638
+    },
+    {
+      "path": "examples/creator-ledger/decision-rename.md",
+      "sha256": "2bb56b4456261d207dcaac315513a4c308de78d0a97ae5fcfb8208803f56253f",
+      "bytes": 3809
+    },
+    {
+      "path": "examples/creator-ledger/identity.md",
+      "sha256": "da795e18c7c7a343340e358fbd582132ea88e8cd69f2a1ff10e29f5849dc7756",
+      "bytes": 1134
+    },
+    {
+      "path": "platforms/README.md",
+      "sha256": "a22fc3a468bd28fda7f348dea7fed658a5b44af92ab36c0e8f19d105996a0e6e",
+      "bytes": 1875
+    },
+    {
+      "path": "platforms/xiaohongshu/README.md",
+      "sha256": "0f8f9be2fdf642b4f7ab8f7a45d3b29e19a1f97dec1f53fdb3c8c70e91e1a2fe",
+      "bytes": 1355
+    },
+    {
+      "path": "platforms/xiaohongshu/guide.md",
+      "sha256": "76ba8dac548d5b31292dad97398564c9f9ec6ba1eb962d8b928a63be79068b62",
+      "bytes": 18894
+    },
+    {
+      "path": "platforms/xiaohongshu/rules.md",
+      "sha256": "fcec8739550229b9bba39cb90ae23b8f45b2224af6e439d42e83805bce654aa1",
+      "bytes": 12394
+    },
+    {
+      "path": "skills/creator-account-ledger/SKILL.md",
+      "sha256": "3f3004519bed75193b33fb4e6e24f4008a6e22ef65958aa85366134155253e3e",
+      "bytes": 4114
+    },
+    {
+      "path": "templates/account.md",
+      "sha256": "c7417ac60d07fff8e70ef1e48093be92791b9800d3bf82c9496662fe78d8e156",
+      "bytes": 2264
+    },
+    {
+      "path": "templates/decision.md",
+      "sha256": "e4731c5e994e98aa83e65d7197f82e2ae718d85b576c87220f7e29409593303d",
+      "bytes": 1689
+    },
+    {
+      "path": "templates/delegation.md",
+      "sha256": "1e5fb75951b3a4bd18e958b85946518c40b3a96baa3f140d7930ed7f7b414a08",
+      "bytes": 1372
+    },
+    {
+      "path": "templates/identity.md",
+      "sha256": "9c18532e606a2fd762d301e94d5ccebd19f60ee8b68440ec39ff9e2a56e4eadc",
+      "bytes": 367
+    },
+    {
+      "path": "templates/profile.md",
+      "sha256": "cb4b28fe7404125ca2a0368c59667936918a39ad795fecfddc2943005e343547",
+      "bytes": 388
+    },
+    {
+      "path": "templates/project.md",
+      "sha256": "4ca203ddef6b0a4f74dbf70e39093d5933a0d5b3a2101b004fc856fda17868e4",
+      "bytes": 362
+    },
+    {
+      "path": "templates/review.md",
+      "sha256": "ef0df87c5d4f4ddcaf64fd0f74c7dde516649a0abed2d262888cedf5f8882595",
+      "bytes": 1016
+    },
+    {
+      "path": "tools/check_records.py",
+      "sha256": "827333e0ae32050edac046ee0b71f56b12d0313bc28ba900bd644f3931111620",
+      "bytes": 28714
+    },
+    {
+      "path": "workflows/change-access.md",
+      "sha256": "f832fddcfee23081b4be115da06deef9dbe152961f980c604d87f16c96ca26ec",
+      "bytes": 5814
+    },
+    {
+      "path": "workflows/exit-or-handoff.md",
+      "sha256": "e4a63feba762ee43e37cf735a917762c7d28704ba157b12f834668efed9c3352",
+      "bytes": 6446
+    },
+    {
+      "path": "workflows/maintain-creator-ledger.md",
+      "sha256": "c733a8b276b48f2fac63d3c1196b0b0cb59e45402f06e2bf700595994af5e2d9",
+      "bytes": 13625
+    },
+    {
+      "path": "workflows/publish-and-commercialize.md",
+      "sha256": "56644f1ae5acabf89b7ea36b0b259b33f4063c80b94f551f0d1f165c85981122",
+      "bytes": 6520
+    },
+    {
+      "path": "workflows/respond-to-incident.md",
+      "sha256": "f3893235e14cad79798f1828800f1f106299f72789940717caf9a1a663a20c99",
+      "bytes": 5784
+    },
+    {
+      "path": "workflows/review-accounts.md",
+      "sha256": "ad5a8fcdf2e616e2b593b6901050f6d2ba3332e981dc822df73bc566b5cca8c7",
+      "bytes": 4444
+    }
+  ]
+}

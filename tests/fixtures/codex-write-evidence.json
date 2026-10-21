@@ -1,0 +1,250 @@
+{
+  "format": "dlp-native-harness-evidence-v1",
+  "host": "codex",
+  "native_exit_code": 0,
+  "raw_events_sha256": "f1fed8397141e44e79462026460f1681424871c0052b02827f0e52fe2274b282",
+  "events": [
+    {
+      "kind": "agent_message",
+      "text": "我会严格按 C04 的合成范围执行：先读取 `records` 下全部六个既有文件，以及框架中明确允许的 Skill、RECORDS、SECURITY、主流程和四个模板；随后先展示拟变更字段的前后值与授权边界，再尝试只写入新 decision 和 `account-existing.md`，最后实际重读核验。不会触碰外部平台、旧 decision 或其他文件。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command 'rg --files records framework'",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "7a7c7e847320c2318113fabce4c4996f3185043e637cdf766ba82b1977216989",
+      "output_chars": 1411,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "我已确认 `records` 中恰有六个既有文件。现在先读取 C04 对应 Skill 的完整说明，再依其路由只读取获准的框架文档与模板。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\skills\\\\creator-account-ledger\\\\SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "fdd0ecd4ab0fb6198f3a0c53606aca3203e0de3cadb87c2c1b617022faf58611",
+      "output_chars": 1814,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "该 Skill 要求的四个模板是 `account.md`、`identity.md`、`decision.md`、`review.md`。我将一次性读取这四个模板、`RECORDS.md`、`SECURITY.md`、主流程，以及六个业务文件；不会沿业务 links 扩读。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\workflows\\\\maintain-creator-ledger.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "bc61589d1e007bc54925f0bc092a283ee29e92e20626356261fc96c02a8571e8",
+      "output_chars": 5573,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\docs\\\\RECORDS.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "653722f46d397bca36665748fd4e930e57a9951b2b07a96ea1a32520a3559241",
+      "output_chars": 6741,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\docs\\\\SECURITY.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "e4afae9d138d7932410471b3ccb6545a02afb26411b90f2c77e301fc89a75b42",
+      "output_chars": 2306,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\templates\\\\decision.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "43fae6f2db80cbd5b94bc23f39bf51e693f520d130fc2d9a29ec6c8d6750f085",
+      "output_chars": 1047,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\decision-rename.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "5a273bcf33ba4f1b93dd50f6dce82b180073cf13be7444195bd8e7dfcce9294a",
+      "output_chars": 1941,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\templates\\\\identity.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "59191736f4e1f8622e8e02b166bb1fd5ea7175fe25592e638223038055d4d6d4",
+      "output_chars": 259,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\templates\\\\account.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "d507778b8223de6094f379c3795d7d618f11134add0c78c206b51e7b29e2b48a",
+      "output_chars": 1364,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\account-existing.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "2cece984535e8a93af99878886ccbb790a70d730e2a528c78b1daf5006bff7ee",
+      "output_chars": 1457,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\identity.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "da0de99181e8c4d9322a1cf9d12197d4ea56fbd1c567adc5e0fa1cb3a649ff61",
+      "output_chars": 598,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\README.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "9f3d2262d437c9a908ecd46f3771b2d086eb1045d85c620a9d24009624b15f40",
+      "output_chars": 1078,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\templates\\\\review.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "e51f6f5b7c765dd0f615cbb50e0aeb55eeaa64eb9a8c0b0004a9e11bee8532b5",
+      "output_chars": 676,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\account-proposed.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "4d4c83c79a9725df45ee1b90c72cf7fd8216d1daf0f1da9c5a6c414b10647cd7",
+      "output_chars": 838,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\AGENT.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "6e11cd49c7116182586982851614a235ee8416997149a4a577d5fdc5cddf28e2",
+      "output_chars": 783,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "批量读取回传中，`SECURITY.md` 与主流程的中段被输出上限截断；这不满足“完整读取”，所以我会单独补读这两份文件的全文后再拟写。六个业务文件已经全部完整读取。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\docs\\\\SECURITY.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "e4afae9d138d7932410471b3ccb6545a02afb26411b90f2c77e301fc89a75b42",
+      "output_chars": 2306,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'framework\\\\workflows\\\\maintain-creator-ledger.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "bc61589d1e007bc54925f0bc092a283ee29e92e20626356261fc96c02a8571e8",
+      "output_chars": 5573,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "写入前变更清单与授权范围如下（C04 / T4）：\n\n| 文件 / ID | 字段 | 前值 | 拟后值 |\n|---|---|---|---|\n| `records/decision-name-observation.md` / `decision-creator-ledger-name-observation` | 新增整份 decision | 不存在 | confirmed；记录旧名“纸舟整理札记”、新名“纸舟数字整理”、fictional-user 于 2026-10-21 的 reported 报告与确认、限定本地写入范围、平台真实生效时间及独立核实均 unknown、无外部动作；links 反向关联账号 |\n| `records/account-existing.md` | 当前名称 | 纸舟整理札记 | 纸舟数字整理 |\n| 同上 | 名称来源与时点 | 旧 decision 的 O1；2026-10-20；reported；未独立核实 | 新 decision；fictional-user 于 2026-10-21 报告虚构平台已显示新名；reported；未独立核实；真实生效时间 unknown |\n| 同上 | 最近资料核对日 | 2026-10-20（主页摘录） | 2026-10-21（本次只核对用户报告，不是平台实时核验） |\n| 同上 | `updated` | 2026-10-21 | 2026-10-21（值不变，仍明确属于获准字段） |\n| 同上 | `links` | identity + 旧 rename decision | 保留两项并新增 `decision-creator-ledger-name-observation` |\n\n授权仅覆盖上述新 decision 与账号主档的五类字段；不改其他字段、其他五个既有文件或旧 decision，不删除或另建其他文件，不执行平台更名、登录、联网核验、身份映射或所有权改变。证据只记为 `reported`，不会提升为 `verified`。接下来我会先即时重读两条目标路径状态，再按此范围保存。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"if (Test-Path -LiteralPath 'records\\\\decision-name-observation.md') { 'TARGET_EXISTS'; Get-Content -Raw -LiteralPath 'records\\\\decision-name-observation.md' } else { 'TARGET_ABSENT' }; '---ACCOUNT---'; Get-Content -Raw -LiteralPath 'records\\\\account-existing.md'\"",
+      "exit_code": -1,
+      "status": "declined",
+      "output_sha256": "700a50ed57369099bee1946643d73ce01af6a92881b77ae24d3c7816ff8d723c",
+      "output_chars": 348,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "即时重读命令因策略层拒绝了组合式条件命令，未发生任何写入。我会改用两个纯只读、单一目的的检查分别确认目标不存在和账号原文未变化，不扩大范围。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"rg --files records | rg \\\"decision-name-observation\\\\.md\"'$\"'",
+      "exit_code": 1,
+      "status": "failed",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_chars": 0,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\account-existing.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "2cece984535e8a93af99878886ccbb790a70d730e2a528c78b1daf5006bff7ee",
+      "output_chars": 1457,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "账号原文与初读一致，未发现并发变化；新目标在已读取的六文件清单中不存在，且新 ID 与六文件内现有记录 ID 不冲突。现在按已展示范围保存：先新增 decision，再更新账号主档。"
+    },
+    {
+      "kind": "agent_message",
+      "text": "保存被运行环境的只读沙箱拒绝，且审批策略不允许提升权限；补丁未应用，因此目前没有“decision 已写但主档未写”的中间态。依 C04 的失败处置，我不会改用其他写法绕过限制，也不会回滚。现在进行实际重读：核对目录文件清单与账号主档，确认究竟已写/未写。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-ChildItem -LiteralPath 'records' -File | Select-Object -ExpandProperty Name\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "87a467259b92f91e79b50b06b234e8e5a9daa774e9c413246fb270ed3019c9d0",
+      "output_chars": 96,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath 'records\\\\account-existing.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "2cece984535e8a93af99878886ccbb790a70d730e2a528c78b1daf5006bff7ee",
+      "output_chars": 1457,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "C04 已按授权范围执行到保存步骤，但写入被只读沙箱拒绝。\n\n- 已完整读取：六个业务文件，以及获准的 Skill、RECORDS、SECURITY、主流程和四个模板。\n- 已在写入前展示字段前后值及授权边界。\n- 已尝试先新增 `decision-name-observation.md`，再更新 `account-existing.md`。\n- 写入结果：两项均未写入；没有部分写入或中间态，也未执行回滚。\n- 实际重读确认：`records` 仍只有原六个文件；[account-existing.md](<run-root>/records/account-existing.md) 内容完全未变，当前名称仍为“纸舟整理札记”，links 未新增。\n- 其他文件、旧 decision、身份、所有权均未改变；未创建其他文件或执行任何外部动作。\n\n平台结果：fictional-user 于 2026-10-21 报告虚构平台已显示“纸舟数字整理”，证据质量仍为 `reported`。独立核实结果和平台真实生效时间均为 `unknown`。\n\n未完成原因：当前运行环境强制只读，且审批策略禁止提升写权限。需要在允许写入这两个合成路径的环境中重新执行同一已确认补丁。"
+    }
+  ],
+  "native_stderr_selected_diagnostic": "patch rejected: writing is blocked by read-only sandbox; rejected by user approval settings",
+  "native_stderr_source": "Explicitly read synthetic codex-write-stderr.txt line 6; timestamp omitted. Requested --sandbox workspace-write did not prove effective writable tools.",
+  "omissions": [
+    "raw authentication/system metadata",
+    "session/message identifiers",
+    "tool result bodies",
+    "unselected events; consult run report for evidence limitations"
+  ]
+}

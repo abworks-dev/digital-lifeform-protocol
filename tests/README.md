@@ -86,6 +86,18 @@ R06/R07 来自[旧报告的实际缺陷](../examples/creator-ledger-validation.m
 
 新子代理可验证“无继承上下文的文件恢复”，**不等于关闭再启动宿主、关闭记忆/缓存或跨宿主兼容**。宿主版本、实际模型路由、安全控制未知时明确标未知。C02 同平台可靠 ID/同名的完整多轮澄清、真实故障与全套 A/PG 及跨宿主验收仍另测；本批不能把这些升级为通过。
 
+## 第三批：固定基线与原生宿主复测
+
+[跨宿主报告](../examples/cross-harness-validation.md)提供两宿主版本、逐项结果、发现/显式读取分离、原始失败与 v2 恢复补正。离线核验冻结包：
+
+```text
+python -B tests/harness_baseline.py verify --manifest tests/fixtures/harness-baseline.json --archive tests/fixtures/harness-baseline.zip
+python -B tests/prepare_harness_run.py prepare --root <new-run> --host codex --mode explicit
+python -B tests/prepare_harness_run.py inspect --root <new-run>
+```
+
+`<new-run>` 必须替换成不存在的合成临时目录。准备程序写副本/控制输入，inspect 只读此明确测试根；不安装或运行宿主、不改全局配置。每种模式、宿主用独立根，详情以报告为准。[输入 v1](fixtures/harness-prompts.json)及失败保留，[恢复 v2](fixtures/harness-recovery-v2.json)补齐逐文件路径；CLI准备程序默认在恢复控制文件采用 v2。单测只检查包、准备/观察逻辑与已记录合成产物，不自动复跑付费模型，也不把单测成功当作新一轮宿主通过。
+
 ## 6. 记录结果
 
 本批实际命令、独立执行、限制与未完成宿主测试见[可靠性报告](../examples/reliability-validation.md)。旧报告原文不改；报告是测试证据，不是稳定协议、安全认证或真实平台核验。

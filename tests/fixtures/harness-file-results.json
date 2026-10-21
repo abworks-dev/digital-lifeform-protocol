@@ -1,0 +1,93 @@
+{
+  "format": "dlp-harness-file-observation-v1",
+  "scope": "Only the seven explicitly created fictional test workspaces; includes complete file inventory, SHA-256 and mtime_ns comparison. Not host histories/cache/global state. Run-local evidence outside each workspace is excluded.",
+  "results": {
+    "codex-discovery": {
+      "before_files": 42,
+      "after_files": 42,
+      "added": [],
+      "removed": [],
+      "changed_bytes_or_mtime": [],
+      "unchanged": 42,
+      "before_inventory_sha256": "685205243d76069defc9e308988888aeeb4f0b77a22f6707f32000fa8747feb8",
+      "after_inventory_sha256": "685205243d76069defc9e308988888aeeb4f0b77a22f6707f32000fa8747feb8",
+      "changed_hashes": {}
+    },
+    "codex-explicit": {
+      "before_files": 41,
+      "after_files": 41,
+      "added": [],
+      "removed": [],
+      "changed_bytes_or_mtime": [],
+      "unchanged": 41,
+      "before_inventory_sha256": "5698c1831726dd4495ff87cf190a40c5ee9a9fc350c8078fdeb593ecebad9041",
+      "after_inventory_sha256": "5698c1831726dd4495ff87cf190a40c5ee9a9fc350c8078fdeb593ecebad9041",
+      "changed_hashes": {}
+    },
+    "codex-write": {
+      "before_files": 41,
+      "after_files": 41,
+      "added": [],
+      "removed": [],
+      "changed_bytes_or_mtime": [],
+      "unchanged": 41,
+      "before_inventory_sha256": "f7445e4bd188c812791036d3241706ffa4626f639b6026f0cce6d38aed7f9e0e",
+      "after_inventory_sha256": "f7445e4bd188c812791036d3241706ffa4626f639b6026f0cce6d38aed7f9e0e",
+      "changed_hashes": {}
+    },
+    "claude-discovery": {
+      "before_files": 42,
+      "after_files": 42,
+      "added": [],
+      "removed": [],
+      "changed_bytes_or_mtime": [],
+      "unchanged": 42,
+      "before_inventory_sha256": "3025d61c6a0a379ebbda74df7bac1b1aa328e87da71568c35a7ca38bc50882f6",
+      "after_inventory_sha256": "3025d61c6a0a379ebbda74df7bac1b1aa328e87da71568c35a7ca38bc50882f6",
+      "changed_hashes": {}
+    },
+    "claude-explicit": {
+      "before_files": 41,
+      "after_files": 41,
+      "added": [],
+      "removed": [],
+      "changed_bytes_or_mtime": [],
+      "unchanged": 41,
+      "before_inventory_sha256": "48a45485a05f601709cdf439babbfae3c9fdd524a0239f0a4324b851ec561048",
+      "after_inventory_sha256": "48a45485a05f601709cdf439babbfae3c9fdd524a0239f0a4324b851ec561048",
+      "changed_hashes": {}
+    },
+    "dsh-explicit": {
+      "before_files": 41,
+      "after_files": 41,
+      "added": [],
+      "removed": [],
+      "changed_bytes_or_mtime": [],
+      "unchanged": 41,
+      "before_inventory_sha256": "35bf43a6f49d74a3ec6dbf2b8ad4b81f6e1e4c15bbbca945127b0af5a170a112",
+      "after_inventory_sha256": "35bf43a6f49d74a3ec6dbf2b8ad4b81f6e1e4c15bbbca945127b0af5a170a112",
+      "changed_hashes": {}
+    },
+    "dsh-write": {
+      "before_files": 41,
+      "after_files": 42,
+      "added": [
+        "records/decision-name-observation.md"
+      ],
+      "removed": [],
+      "changed_bytes_or_mtime": [
+        "records/account-existing.md"
+      ],
+      "unchanged": 40,
+      "before_inventory_sha256": "94adc10f2778319077b1b2616edef2e7996e76ce028959dd4bb4eabf4296d561",
+      "after_inventory_sha256": "275cb5ef6947cbc204cd5d29ac54af355e5a05654693d70d8eceaf74835b3be6",
+      "changed_hashes": {
+        "records/account-existing.md": {
+          "before": "704815111e4f675c8d04ef443a6f0433dbaabf3a4015b5b615c3de8bc8cf125c",
+          "after": "d473e1b322b0d6df91b001325a4bce675e7668e94db692eb066833e9db730f95"
+        }
+      },
+      "account_diff": "--- frozen/account-existing.md\n+++ saved/account-existing.md\n@@ -10,6 +10,7 @@\n links:\n   - identity-creator-ledger-fictional\n   - decision-creator-ledger-rename\n+  - decision-creator-ledger-name-observation\n ---\n \n # 已确认事实（仅虚构设定）\n@@ -20,9 +21,9 @@\n \n 主页: https://cloudpage.example/fictional-cloudpage-001 （保留示例域名，非真实主页，无需访问）。\n \n-当前名称: 纸舟整理札记。\n+当前名称: 纸舟数字整理。\n \n-名称来源与时点: decision-creator-ledger-rename 的观察 O1；2026-10-20 fictional-user 在虚构案例中提供的主页摘录显示此名称，证据质量 reported，未独立核实。这是最近带来源的观察，不是因为批准更名就认定平台已更新；平台当前名称仍待核实。\n+名称来源与时点: decision-creator-ledger-name-observation 的观察 O2；fictional-user 于 2026-10-21 报告虚构平台已显示“纸舟数字整理”，证据质量 reported。本次只核对用户报告，未独立核实平台；独立核实结果与真实生效时间均为 unknown，不由批准或本地保存推断平台完成。\n \n 存在情况: existing（虚构用户陈述，不是实际平台验证）。\n \n@@ -48,7 +49,7 @@\n \n 品牌说明: 纸舟为虚构署名，表达逐步整理的创作方向；不证明所有权。名称观察与变更进展以本主档对应字段及关联 decision 为准，不在品牌说明重复维护。\n \n-最近资料核对日: 2026-10-20（仅对案例提供的主页摘录作资料核对，不是平台实时核验）。\n+最近资料核对日: 2026-10-21（本次只核对 fictional-user 的用户报告，未独立核实平台，不是平台实时核验）。\n \n # 治理与依赖\n \n"
+    }
+  }
+}

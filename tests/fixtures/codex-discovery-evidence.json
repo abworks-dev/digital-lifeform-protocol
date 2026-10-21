@@ -1,0 +1,106 @@
+{
+  "format": "dlp-native-harness-evidence-v1",
+  "host": "codex",
+  "native_exit_code": 0,
+  "raw_events_sha256": "49398c84d0fa0eb2de2f11d74eab784980483fdf2202027d752b2ed6d9835db1",
+  "events": [
+    {
+      "kind": "error",
+      "text": "Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest."
+    },
+    {
+      "kind": "agent_message",
+      "text": "宿主技能枚举已列出 `creator-account-ledger`，其来源为项目内 `<run-root>\\.agents\\skills\\creator-account-ledger\\SKILL.md`，因此判定“已由本项目提供”。现在按宿主技能机制激活它；随后只读取技能规定的核心依赖和你白名单中的业务材料，不做目录扫描、不沿链接扩读。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\.agents\\\\skills\\\\creator-account-ledger\\\\SKILL.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "fdd0ecd4ab0fb6198f3a0c53606aca3203e0de3cadb87c2c1b617022faf58611",
+      "output_chars": 1814,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "技能已成功激活。它要求首次接入先核对最小接入契约，并读取框架核心依赖 `docs/RECORDS.md`、`docs/SECURITY.md`、`workflows/maintain-creator-ledger.md`；我将读取这些明确路径，再读取获准的六份 records 文件。不会读取模板、平台资料或任何链接目标。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Write-Output '===FILE_1==='; Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\HARNESS.md'; Write-Output '===FILE_2==='; Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\RECORDS.md'; Write-Output '===FILE_3==='; Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\SECURITY.md'; Write-Output '===FILE_4==='; Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\workflows\\\\maintain-creator-ledger.md'; Write-Output '===FILE_5==='; Get-Content -Raw -LiteralPath '<run-root>\\\\records\\\\README.md'; Write-Output '===FILE_6==='; Get-Content -Raw -LiteralPath '<run-root>\\\\records\\\\AGENT.md'; Write-Output '===FILE_7==='; Get-Content -Raw -LiteralPath '<run-root>\\\\records\\\\identity.md'; Write-Output '===FILE_8==='; Get-Content -Raw -LiteralPath '<run-root>\\\\records\\\\account-existing.md'; Write-Output '===FILE_9==='; Get-Content -Raw -LiteralPath '<run-root>\\\\records\\\\account-proposed.md'; Write-Output '===FILE_10==='; Get-Content -Raw -LiteralPath '<run-root>\\\\records\\\\decision-rename.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "074787ce8db869a0b77436d9b325526b32d777aaf067252352e624c24c528b7d",
+      "output_chars": 26223,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "刚才批量读取的回传在框架文档中段被宿主截断；这不影响已读到的业务主档，但核心依赖不能算完整取得。我会仅对三个已明确的核心文件分开重读，补足证据后再作判断。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\RECORDS.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "653722f46d397bca36665748fd4e930e57a9951b2b07a96ea1a32520a3559241",
+      "output_chars": 6741,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\SECURITY.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "e4afae9d138d7932410471b3ccb6545a02afb26411b90f2c77e301fc89a75b42",
+      "output_chars": 2306,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\workflows\\\\maintain-creator-ledger.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "bc61589d1e007bc54925f0bc092a283ee29e92e20626356261fc96c02a8571e8",
+      "output_chars": 5573,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\RECORDS.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "653722f46d397bca36665748fd4e930e57a9951b2b07a96ea1a32520a3559241",
+      "output_chars": 6741,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\docs\\\\SECURITY.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "e4afae9d138d7932410471b3ccb6545a02afb26411b90f2c77e301fc89a75b42",
+      "output_chars": 2306,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -Raw -LiteralPath '<run-root>\\\\framework\\\\workflows\\\\maintain-creator-ledger.md'\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "bc61589d1e007bc54925f0bc092a283ee29e92e20626356261fc96c02a8571e8",
+      "output_chars": 5573,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "- **枚举**：宿主已列出项目级 `creator-account-ledger`。\n- **激活**：已按宿主技能机制激活。\n- **来源**：`<run-root>\\.agents\\skills\\creator-account-ledger\\SKILL.md`，位于本项目内；未接受项目外同名 Skill。\n- **读取**：已读取框架核心依赖及白名单内六份业务材料；未扫描目录、未沿链接扩读、未联网、未写入。\n\n业务判断：\n\n1. 现有账号最近带来源的名称观察是 **“纸舟整理札记”**，依据日期为 **2026-10-20**。证据质量为 `reported`，未独立核实，因此不能断言它仍是平台实时名称。来源：[account-existing.md](<run-root>/records/account-existing.md) 和观察 O1：[decision-rename.md](<run-root>/records/decision-rename.md)。\n\n2. 已批准的目标名称是 **“纸舟数字整理”**，批准日期为 **2026-10-21**。本地决定已经保存，但平台提交、执行和验证结果均为 **unknown**；因此不能认定更名已经完成。\n\n3. 第二个账号的记录状态为 `proposed`，平台 ID、主页和当前名称均为 **unknown**。台账没有已创建证据，所以它不能算作已有账号；若询问现实平台上是否实际存在，答案仍是 **unknown**。\n\n本次无文件改动，也未执行任何外部平台操作。"
+    }
+  ],
+  "omissions": [
+    "raw authentication/system metadata",
+    "session/message identifiers",
+    "tool result bodies",
+    "unselected events; consult run report for evidence limitations"
+  ]
+}

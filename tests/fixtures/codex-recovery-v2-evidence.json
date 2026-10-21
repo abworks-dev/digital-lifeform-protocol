@@ -1,0 +1,111 @@
+{
+  "format": "dlp-native-harness-evidence-v1",
+  "host": "codex",
+  "native_exit_code": 0,
+  "raw_events_sha256": "15cdc3814a278ea2701357e9c90d74795903a8c01b9224923cb5e7f1c761cdb7",
+  "events": [
+    {
+      "kind": "error",
+      "text": "Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest."
+    },
+    {
+      "kind": "agent_message",
+      "text": "我会严格按你给出的白名单逐文件读取：先读取入口技能文件与三份核心依赖；确认可读后，再读取列出的 5 份记录。全程不扫描目录、不联网、不写入、不读取其他路径，也不启动其他代理。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\framework\\\\skills\\\\creator-account-ledger\\\\SKILL.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "fdd0ecd4ab0fb6198f3a0c53606aca3203e0de3cadb87c2c1b617022faf58611",
+      "output_chars": 1814,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\framework\\\\docs\\\\RECORDS.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "653722f46d397bca36665748fd4e930e57a9951b2b07a96ea1a32520a3559241",
+      "output_chars": 6741,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\framework\\\\docs\\\\SECURITY.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "e4afae9d138d7932410471b3ccb6545a02afb26411b90f2c77e301fc89a75b42",
+      "output_chars": 2306,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\framework\\\\workflows\\\\maintain-creator-ledger.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "bc61589d1e007bc54925f0bc092a283ee29e92e20626356261fc96c02a8571e8",
+      "output_chars": 5573,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "入口与三份核心依赖均已成功读取，未触发“核心不可读”的停止条件。接下来只读取你明确列出的 5 份记录；我会把本地记录状态、平台外部结果和证据质量分开判断。"
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\records\\\\identity.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "da0de99181e8c4d9322a1cf9d12197d4ea56fbd1c567adc5e0fa1cb3a649ff61",
+      "output_chars": 598,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\records\\\\account-existing.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "2cece984535e8a93af99878886ccbb790a70d730e2a528c78b1daf5006bff7ee",
+      "output_chars": 1457,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\records\\\\account-proposed.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "4d4c83c79a9725df45ee1b90c72cf7fd8216d1daf0f1da9c5a6c414b10647cd7",
+      "output_chars": 838,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\records\\\\decision-rename.md' -Raw\"",
+      "exit_code": 0,
+      "status": "completed",
+      "output_sha256": "5a273bcf33ba4f1b93dd50f6dce82b180073cf13be7444195bd8e7dfcce9294a",
+      "output_chars": 1941,
+      "truncation_notice": false
+    },
+    {
+      "kind": "command_execution",
+      "command": "\"C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath '<run-root>\\\\records\\\\decision-name-observation.md' -Raw\"",
+      "exit_code": 1,
+      "status": "failed",
+      "output_sha256": "7079eacd13ccc2e86372d4537baeec91f0eb02612c481589a6851b627d1ed00a",
+      "output_chars": 314,
+      "truncation_notice": false
+    },
+    {
+      "kind": "agent_message",
+      "text": "在获准范围内，4 份核心文件及 4 份记录可读；`records/decision-name-observation.md` 缺失，未补建，也未读取其他位置。\n\n- 最新可见的带日期名称观察：2026-10-20，名称为“纸舟整理札记”。\n- 来源：`decision-creator-ledger-rename` 的观察 O1，即 fictional-user 提供的虚构主页摘录。\n- 证据质量：`reported`，仅为案例陈述，未独立核实。\n- 日期：发布/查阅日均为 2026-10-20；平台生效日 `unknown`。\n- 与旧批准历史的关系：2026-10-21 已批准将名称改为“纸舟数字整理”，但这只是更名意向和本地保存批准。它没有覆盖 2026-10-20 的旧名称观察，也不能证明已向平台提交或已经生效。可见范围内没有更晚的平台名称观察。\n- 本地已保存：\n  - 已有账号主档，当前名称仍按 O1 记为“纸舟整理札记”；\n  - 更名 decision，保存了目标名称“纸舟数字整理”、批准日期及未完成事项；\n  - identity 记录；\n  - 第二号的拟议账号草案。\n- 尚未闭环：\n  - 是否向平台提交更名；\n  - 平台执行结果；\n  - 平台当前显示名称；\n  - 平台验证证据；\n  - 实际生效时间；\n  - 缺失的 `decision-name-observation.md` 是否原本包含更新观察，因文件缺失无法判断。\n- 第二号是否已创建：没有。它仍是 `draft`、`proposed`、`preparing`；平台 ID、主页、当前名称和实际所有者均为 `unknown`。\n- 平台独立核实：未知，现有证据不是 `verified`。\n- 平台生效时间：未知。\n\n所有内容均为虚构案例记录；本次没有写入文件、执行平台注册或联网核验。"
+    }
+  ],
+  "omissions": [
+    "raw authentication/system metadata",
+    "session/message identifiers",
+    "tool result bodies",
+    "unselected events; consult run report for evidence limitations"
+  ]
+}
