@@ -1,0 +1,24 @@
+{
+  "description": "全部为虚构、合成的显式输入；base 与 overrides 仅供测试生成 frontmatter，不是产品 schema。",
+  "base": {"id":"account-fixture","type":"account","title":"虚构检查样例","status":"draft","source":"fictional-user","updated":"2026-10-21","confirmed_by":"unknown","confirmed_at":"unknown","links":[]},
+  "cases": [
+    {"name":"valid_draft","overrides":{},"exit":0,"expected":[]},
+    {"name":"valid_confirmed","overrides":{"status":"confirmed","confirmed_by":"fictional-user","confirmed_at":"2024-02-29"},"public":true,"exit":0,"expected":[]},
+    {"name":"valid_unknown_dates","overrides":{"updated":"unknown"},"exit":0,"expected":[["MC05","warning"]]},
+    {"name":"missing_source","remove":["source"],"exit":1,"expected":[["MC01","error"]]},
+    {"name":"empty_source","overrides":{"source":""},"exit":1,"expected":[["MC01","error"]]},
+    {"name":"unknown_source","overrides":{"source":"unknown"},"exit":0,"expected":[["MC01","warning"]]},
+    {"name":"unknown_id","overrides":{"id":"unknown"},"exit":1,"expected":[["MC02","error"]]},
+    {"name":"invalid_type","overrides":{"type":"brand"},"exit":1,"expected":[["MC03","error"]]},
+    {"name":"invalid_status","overrides":{"status":"operating"},"exit":1,"expected":[["MC03","error"]]},
+    {"name":"missing_confirmer","overrides":{"status":"confirmed","confirmed_at":"2026-10-21"},"remove":["confirmed_by"],"exit":1,"expected":[["MC04","error"]]},
+    {"name":"unknown_confirmation","overrides":{"status":"confirmed"},"exit":1,"expected":[["MC04","error"]]},
+    {"name":"invalid_calendar_date","overrides":{"updated":"2026-02-29"},"exit":1,"expected":[["MC05","error"]]},
+    {"name":"invalid_date_spelling","overrides":{"updated":"2026-1-2"},"exit":1,"expected":[["MC05","error"]]},
+    {"name":"nonfictional_public_confirmation","overrides":{"status":"confirmed","confirmed_by":"synthetic-other-person","confirmed_at":"2026-10-21"},"public":true,"exit":1,"expected":[["MC04","error"]]},
+    {"name":"links_not_list","overrides":{"links":"account-other"},"exit":1,"expected":[["MC06","error"]]},
+    {"name":"unknown_link","overrides":{"links":["unknown"]},"exit":1,"expected":[["MC06","error"]]},
+    {"name":"closed_missing_target","overrides":{"links":["account-absent"]},"exit":1,"expected":[["MC06","error"]]},
+    {"name":"open_unread_target","overrides":{"links":["account-absent"]},"closed":false,"exit":2,"expected":[["MC06","unchecked"]]}
+  ]
+}

@@ -30,6 +30,18 @@ links: []
 
 delegation_state: unknown
 
+# 授权变更追踪（可选试验）
+
+变更 decision ID: unknown
+
+平台角色 / 最后观察到的实际能力: unknown / unknown
+
+观察时间 / 证据 decision ID: unknown / unknown
+
+尚未执行或验证的事项: unknown
+
+过程与边界见[授权变更闭环](../workflows/change-access.md)。本地撤回与平台撤权分开，不以此小节声明工具权限已生效。
+
 # 价值交付试验字段（待场景验证，非强制必填）
 
 目标: unknown

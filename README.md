@@ -4,7 +4,23 @@
 
 **面向 AI 超级个体的数字身份、资产与 Agent 委托实验规范及工作空间模板。**
 
-当前状态：定位已确认，已有最小记录约定、模板、两个手动流程与虚构案例草案。尚无稳定协议、可用自动化工具或兼容性认证。名称中的 Protocol 表达研究方向，不代表已建立行业标准。
+当前是**文件与指令组成的手动实验版，不是自动管理应用**：已有记录约定、模板、工作流、虚构案例、Skill 入口和显式文件范围的[只读检查器与可靠性复跑](tests/README.md)，优先完善自媒体账号台账。尚无稳定协议、安装器、自动账号操作或兼容认证；Protocol 表达研究方向，不代表行业标准。历史验证见[旧走查报告](examples/creator-ledger-validation.md)，第二批工具与回归证据另见[可靠性报告](examples/reliability-validation.md)。
+
+## 从这里开始
+
+第一次使用：打开[快速开始](docs/QUICKSTART.md)，先用虚构案例做一次只读查询；无需私人目录、登录或安装本项目。你需要一个能读取框架文件的现有 Agent；不能读本地文件时，可手动提供完整相关文本与来源，但不能声称已读取或保存本地记录。
+
+| 我想做什么 | 最少准备什么 | 本次会得到什么 |
+|---|---|---|
+| [T1 制定账号方案](workflows/maintain-creator-ledger.md#t1-账号方案) | 目标、拟用平台、资源与隐私约束；未知可直说 | 复用/另建/不创建的方案与缺口，不是注册结果 |
+| [T2 盘点已有账号](workflows/maintain-creator-ledger.md#t2-已有账号盘点) | 用户清单或获准总览、主档文件 | 范围内账号、身份与用途、来源及冲突，不是自动搜索所有账号 |
+| [T3 查询某个账号](workflows/maintain-creator-ledger.md#t3-单项查询) | 具体问题、ID/线索和获准主档 | 带来源、日期与未知项的回答，默认不写 |
+| [T4 提议或保存变更](workflows/maintain-creator-ledger.md#t4-记录变更) | 目标 ID、拟改事项和依据 | 字段差异与 decision 草案；逐项获准后才保存 |
+| [T5 复核、交接或退出检查](workflows/maintain-creator-ledger.md#t5-复核交接与退出检查) | 检查类型、对象/范围、触发原因 | 风险、未闭环项与人工清单，不是平台撤权或注销 |
+
+五条任务的完整输入、读取、输出、确认点和完成条件，以[台账维护流程](workflows/maintain-creator-ledger.md#1-五条核心任务的输入与输出)为准。框架如何加载、路径与工具如何核对，见[最小接入契约](docs/HARNESS.md)。
+
+**默认只在对话交付。** 需要保存时，Agent 先列出具体文件、字段、前后值和依据，再分别请求内容确认与保存授权。认可方案不等于允许写入，允许写入不等于允许注册、登录、发布或公开身份关联。真实资料只放独立私有工作空间，使用前先明确模型、历史和同步的[数据边界](docs/SECURITY.md)；不要提供密码、Token、Cookie 或恢复码。
 
 ## 为什么做
 
@@ -22,14 +38,45 @@
 
 ## 首个应用
 
-设计并维护“职业身份 + 自媒体 + 网店”的账号体系：识别哪些已有账号可复用，哪些应拆分；记录项目资产归属、维护责任和代理授权。不是鼓励注册更多小号，也不是规避平台规则。
+优先实现**自媒体身份与账号管理台账**：单一账号主档、身份关系、变更历史与 Agent 维护入口，先跑通盘点、查询、建档、变更和复核，再按真实需要连接作品、发布与经营。2026-10-21 用户确认此实施优先级；字段仍为实验设计，不包含真实账号迁移或外部操作授权。
 
-## 入口
+台账支持已有账号盘点，也支持尚未注册的筹备方案；本轮另补平台创建与健康运营的通用手动指南子集，先完善小红书，不代表完整创作者启动系统已交付或验证。
+
+此前“职业身份 + 自媒体 + 网店”的综合账号体系仍作为较广案例方向保留，不在本次同时扩建。不是鼓励注册更多小号，也不是规避平台规则。
+
+- [日常维护流程](workflows/maintain-creator-ledger.md)
+- [Skill 入口与加载说明](skills/creator-account-ledger/SKILL.md)
+- [静态虚构台账](examples/creator-ledger/README.md)
+- [场景验收与验证范围](examples/creator-ledger-tests.md)
+
+## 按需深入
+
+不用一次读完下列文档。P0 治理、依赖、授权闭环与规则证据为可选试验；P1 退出、事件和商业化为人工检查草案，不表示运行验收已通过。
+
+### 核心与接入
 
 - [快速开始](docs/QUICKSTART.md)
-- [最小记录约定](docs/RECORDS.md)
+- [最小记录约定](docs/RECORDS.md)及[机器可检查规则边界](docs/RECORDS.md#机器可检查规则边界草案)
+- [最小接入契约与初始兼容矩阵](docs/HARNESS.md)
+- [Hermes 接入指南](docs/HERMES.md)
+- [安全与隐私边界](docs/SECURITY.md)
+- [虚构接入验收集](examples/acceptance-tests.md)
 - [完整虚构案例](examples/solo-builder.md)
 - [账号共用与拆分方法](handbook/share-or-separate.md)
+
+### 治理与平台参考
+
+- [账号治理与依赖字段](docs/RECORDS.md#账号治理与依赖)
+- [授权变更闭环](workflows/change-access.md)
+- [定期与事件复核](workflows/review-accounts.md)
+- [规则与证据记录](docs/RECORDS.md#规则与证据)
+- [停用、交接与退出检查](workflows/exit-or-handoff.md)
+- [事件处置检查](workflows/respond-to-incident.md)
+- [发布与商业化检查](workflows/publish-and-commercialize.md)
+- [平台指南目录](platforms/README.md)：一平台一文件夹，区分规则证据与创建、健康运营建议。
+- [小红书平台指南](platforms/xiaohongshu/README.md)：[规则与证据](platforms/xiaohongshu/rules.md)及[本人创建与健康运营手动指南](platforms/xiaohongshu/guide.md)。这是创作者从零启动的通用手动指南子集，不是登录/API 工具、自动运营或养号防封保证；原平台参考保留兼容入口。
+
+### 维护本项目
 
 - [定位与边界](docs/PROJECT.md)
 - [分阶段方向与验收](docs/ROADMAP.md)

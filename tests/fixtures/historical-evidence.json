@@ -1,0 +1,6 @@
+{
+  "description": "Immutable old report, normalized LF UTF-8 SHA-256 for portable checkout comparison; local byte/mtime no-op checks are separate.",
+  "sha256": {
+    "examples/creator-ledger-validation.md": "b927cfbd69796b7008881540f056dda75bb3161c2ac55c07070eb59b9ef21fba"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "baseline": "creator-ledger-2026-10-21",
+  "format": "dlp-reliability-replay-v1",
+  "limits": [
+    "Test-only reference writes and injected OSError; not a production writer or real disk/permission failure.",
+    "Fresh Python process is not a restarted Agent Harness session.",
+    "Backlinks and stale prose use fixture-specific oracles, not MC schema validation."
+  ],
+  "scenarios": [
+    {
+      "checker_exit": 1,
+      "id": "R01_duplicate_conflict",
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "concurrent_bytes_preserved": true,
+      "id": "R02_concurrent_change",
+      "passed": true,
+      "state": "conflict",
+      "unwritten": [
+        "decision-name-observation.md",
+        "account-existing.md"
+      ],
+      "written": []
+    },
+    {
+      "checker_exit": 0,
+      "id": "R03_partial_failure",
+      "passed": true,
+      "recovered": {
+        "account_references_new_decision": false,
+        "local_name_links_closed": false,
+        "current_name": "纸舟整理札记",
+        "evidence_quality": "reported",
+        "new_decision_saved": true,
+        "old_history_preserved": true,
+        "platform_independent_verification": "unknown",
+        "proposed_account_still_proposed": true,
+        "stale_description": false
+      },
+      "state": "partial",
+      "unwritten": [
+        "account-existing.md"
+      ],
+      "written": [
+        "decision-name-observation.md"
+      ]
+    },
+    {
+      "checker_exit": 0,
+      "current_name": "纸舟整理札记",
+      "id": "R04_noop",
+      "passed": true,
+      "repeat_report_equal": true,
+      "unchanged_bytes_mtime_inventory": true
+    },
+    {
+      "checker_exit": 0,
+      "id": "R05_fresh_process",
+      "passed": true,
+      "protected_files_unchanged": true,
+      "read_probe_unchanged": true,
+      "recovered": {
+        "account_references_new_decision": true,
+        "local_name_links_closed": true,
+        "current_name": "纸舟数字整理",
+        "evidence_quality": "reported",
+        "new_decision_saved": true,
+        "old_history_preserved": true,
+        "platform_independent_verification": "unknown",
+        "proposed_account_still_proposed": true,
+        "stale_description": false
+      }
+    },
+    {
+      "checker_exit": 0,
+      "id": "R06_missing_backlink",
+      "passed": true,
+      "protected_files_unchanged": true,
+      "read_probe_unchanged": true,
+      "recovered": {
+        "account_references_new_decision": false,
+        "local_name_links_closed": false,
+        "current_name": "纸舟数字整理",
+        "evidence_quality": "reported",
+        "new_decision_saved": true,
+        "old_history_preserved": true,
+        "platform_independent_verification": "unknown",
+        "proposed_account_still_proposed": true,
+        "stale_description": false
+      }
+    },
+    {
+      "checker_exit": 0,
+      "id": "R07_stale_description",
+      "passed": true,
+      "protected_files_unchanged": true,
+      "read_probe_unchanged": true,
+      "recovered": {
+        "account_references_new_decision": true,
+        "local_name_links_closed": true,
+        "current_name": "纸舟数字整理",
+        "evidence_quality": "reported",
+        "new_decision_saved": true,
+        "old_history_preserved": true,
+        "platform_independent_verification": "unknown",
+        "proposed_account_still_proposed": true,
+        "stale_description": true
+      }
+    }
+  ],
+  "seed_sha256_lf_utf8": {
+    "account-existing.md": "704815111e4f675c8d04ef443a6f0433dbaabf3a4015b5b615c3de8bc8cf125c",
+    "account-proposed.md": "4ceacd6eabcb4781c3ebed6b984b0740b82932eccd1ec2e71591734b71b8309f",
+    "decision-rename.md": "2bb56b4456261d207dcaac315513a4c308de78d0a97ae5fcfb8208803f56253f",
+    "identity.md": "da795e18c7c7a343340e358fbd582132ea88e8cd69f2a1ff10e29f5849dc7756"
+  }
+}
