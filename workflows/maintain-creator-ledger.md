@@ -52,7 +52,7 @@
 
 权限变更、停用/交接/注销依上面的专项流程处理；事件和发布商业化分别转已有专项流程，不从本流程获得注册、登录、发布、私信、撤权或付款权限。
 
-涉及平台创建与健康运营时，在本流程基础上按需读[平台目录](../platforms/README.md)；小红书使用[平台入口](../platforms/xiaohongshu/README.md)，分开读取[规则证据](../platforms/xiaohongshu/rules.md)与[本人创建、健康运营指南](../platforms/xiaohongshu/guide.md)。无旧号时可直接形成拟议方案，不强迫读取私人台账。指南只提供通用手动建议，不新增写入或外部操作授权，不保证养号防封或运营效果；拟议账号仍按下文语义维护。
+涉及平台创建与健康运营时，在本流程基础上按需读[平台目录](../platforms/README.md)；小红书使用[平台入口](../platforms/xiaohongshu/README.md)，分开读取[规则证据](../platforms/xiaohongshu/rules.md)与[本人创建、健康运营指南](../platforms/xiaohongshu/guide.md)；抖音普通个人号使用[抖音入口](../platforms/douyin/README.md)，不借用小红书规则或角色权限。无旧号时可直接形成拟议方案，不强迫读取私人台账。指南只提供通用手动建议，不新增写入或外部操作授权，不保证养号防封或运营效果；拟议账号仍按下文语义维护。
 
 ## 2. 盘点与匹配
 

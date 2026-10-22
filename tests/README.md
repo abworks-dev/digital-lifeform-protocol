@@ -131,3 +131,113 @@ python -B -m unittest discover -s tests -p test_source_changes.py -v
 ## 6. 记录结果
 
 本批实际命令、独立执行、限制与未完成宿主测试见[可靠性报告](../examples/reliability-validation.md)。旧报告原文不改；报告是测试证据，不是稳定协议、安全认证或真实平台核验。
+
+## 7. 抖音第二平台交付检查（2026-10-22）
+
+[本轮独立报告](../examples/douyin-validation.md)记录新一轮两平台七组实际模型回答、保留的措辞瑕疵、三轮虚构方案／实际工具保存／复核。它不继承小红书旧通过数，也不把下面的离线检查当作自动重跑模型。
+
+```text
+python -B -m unittest discover -s tests -p test_douyin_delivery.py -v
+python -B tools/check_records.py --root . --record examples/douyin-ledger/account-proposed.md --record examples/douyin-ledger/decision-confirm-proposal.md --record examples/douyin-ledger/review-proposal.md --closed-set --public-examples --baseline douyin-demo-2026-10-22 --format json
+```
+
+[交付检查](test_douyin_delivery.py)复用现有检查器，不增平台 schema。四项检查仅覆盖：三份显式合成记录的 MC 子集、方案确认仍 proposed／preparing 及关键 unknown、此合成目录仅一份主档与决定／复核引用、17 份新改 Markdown 的直接行内链接／简单标题锚点。链接检查只额外打开明确指向的公开目标核存在／标题，不递归遍历；外部 URL 跳过，代码块忽略。复杂 Markdown、HTML、引用式链接、真实浏览器渲染及外部现行性不在检查承诺中；标题 slug 沿用 MC07 近似规则。业务正文的字面量断言只适用于本案例，不是通用语义核验；测试不调用模型、不联网或操作平台，也不为旧报告修复本机缺失证据链接。
+
+## 8. 两平台统一导航检查（2026-10-22）
+
+[共同专题职责](../platforms/README.md#统一专题导航与职责)只统一找任务的方法，平台覆盖与证据分别维护。[导航检查](test_platform_navigation.py)的四项离线测试核对：八类专题顺序与四列表头、每项有内容入口且指定 12 份文档的直接链接／简单锚点存在、抖音原章节及小红书旧导航标题保留。复用上节静态链接函数，不递归扫描或联网；简单表格解析仅适合当前导航写法，不是通用 Markdown 解析器。标题存在不证明任务语义、授权、现行性或平台能力。
+
+```text
+python -B -m unittest discover -s tests -p test_platform_navigation.py -v
+```
+
+改动前对 10 份平台文档的静态检查发现小红书六处 `README.md#共同边界` 断锚点，已改为平台总览的共同边界，不恢复已移除的旧兼容页。现行入口新增交叉链接与覆盖缺口，但没有补核平台规则或改写历史模型／保存验证；本轮不新增模型行为测试或虚构业务保存测试，也不办理平台动作。
+
+本轮 Python 3.11.9 实际复跑：全量 57 项，56 通过、1 跳过（`OS did not permit creation of test symlink`），退出 0；新增导航 4 项均通过。R01–R07 保持原固定预期、冻结基线 35 文件核验通过，均退出 0，未改 golden 或历史报告。指定 12 份文档的 207 个本地链接、56 个锚点无缺失；`git diff --check` 退出 0，仅有 Git 换行提醒。以上均为离线检查，不升级平台覆盖或真实结果。
+
+## 9. 两平台多轮官方研究补充（2026-10-22）
+
+本批是[专题官方研究与审阅](../evidence/platform-sources/2026-10-22-deep-common/review.md)，不是新的平台执行／模型能力验收。两平台分别沿入口重读、正文关联、后续版本／专项缺口搜索三轮补充；[小红书来源](../evidence/platform-sources/2026-10-22-deep-xiaohongshu/review.md)与[抖音来源](../evidence/platform-sources/2026-10-22-deep-douyin/review.md)保留实际范围、日期、失败和机器误报。共同五项依据另由只读子代理逐项对照本地捕获，未发现实质不支持；按其非阻断建议补明信息内容流广告的可识别要求。这是文本证据交叉审阅，不是独立源站鉴真或法律结论认证。
+
+回归沿用第 1、第三批、第 7 节命令，不修改预期、冻结包或历史失败。本轮不增加通用校验器或平台 schema，也不为文档结论编造模型通过数。对本批 16 份明确指定文档，复用[现有静态函数](test_douyin_delivery.py)并替换本次 `DOCUMENTS` 白名单（见共同审阅中的复现命令）；仅检查直接行内本地链接及简单标题锚点、跳过外部 URL，不递归验证全仓库历史证据，局限同第 7 节。
+
+本批实际复跑（Python 3.11.9）：全量 57 项，56 通过、1 跳过，退出 0；跳过仍是 `OS did not permit creation of test symlink`。R01–R07 符合原固定预期、冻结基线 35 文件及既有内容哈希核验通过，均退出 0；没有改测试代码、golden 或冻结包。指定 16 份文档的 218 个本地链接、53 个锚点无缺失，30 个外部链接跳过；`git diff --check` 退出 0，仅有 Git 的 LF→CRLF 提示。未执行的模型业务行为／工具保存／真实平台测试保持未执行，不继承旧通过数。
+
+## 10. 未确认正文续核（2026-10-22）
+
+本轮继续核实[小红书未确认项](../evidence/platform-sources/2026-10-22-followup-xiaohongshu/review.md)与[抖音未确认项](../evidence/platform-sources/2026-10-22-followup-douyin/review.md)。证据层为匿名实际网页／公开页面数据读取及正文对照，不是客户端功能实测、当前账号资格认证或平台结果。父层另对抖音主协议和新内容标识、热点、网暴正文，小红书恢复可读的企业小程序与交易导流正文逐项回读；具体差异和剩余 unknown 见各来源记录。新路径成功不抹去前轮超时、壳页、缺段，媒体转述不升级为官方正文。
+
+沿用离线测试、R01–R07可靠性复跑及冻结包核验命令；本轮不改测试代码、预期或冻结包。首次复跑当前工作树（已含此前来源工具 v2 补正）：Python 3.11.9，全量60项中59通过、1跳过（`OS did not permit creation of test symlink`），退出0；R01–R07均符合原固定预期，冻结35文件与既有内容哈希核验通过，均退出0。来源工具及其测试文件在本次命令前后SHA256相同；这不是对并发编辑的通用锁定保证。
+
+续核链接检查复用现有静态函数，白名单为平台总览、两平台11份文档、两份新审阅及本页，共15份；不递归扫描仓库或私人材料。可在仓库根目录将下列 Python 经标准输入交给 `python -B -` 执行：
+
+```python
+import json, sys
+sys.path.insert(0, 'tests')
+import test_douyin_delivery as nav
+nav.DOCUMENTS = ['platforms/README.md', 'tests/README.md'] + [
+    'platforms/xiaohongshu/' + name + '.md' for name in
+    ('README', 'rules', 'guide', 'security', 'collaboration', 'lifecycle',
+     'rights-and-privacy', 'policy-review')
+] + ['platforms/douyin/' + name + '.md' for name in ('README', 'rules', 'guide')] + [
+    'evidence/platform-sources/2026-10-22-followup-' + name + '/review.md'
+    for name in ('xiaohongshu', 'douyin')
+]
+counts, problems = nav.check_navigation()
+print(json.dumps({'counts': counts, 'problems': problems}, ensure_ascii=False))
+raise SystemExit(bool(problems))
+```
+
+只核直接行内本地链接及简单标题锚点；外部URL跳过，HTML、复杂Markdown与真实浏览器渲染不在保证内。模型业务行为、工具保存与真实平台动作本轮未执行；旧验证不自动继承为新规则适用通过。
+
+最终文档落盘后的复跑：60项中59通过、1同因跳过，4.597秒；R01–R07符合原预期，冻结35文件核验通过（内容SHA256仍为`a9e9399b68fef9a6f47f4643be2a09d8cd96740613864c6b9c32b7f972954716`）。上述15份文档的251个本地链接、59个锚点无缺失，83个外部链接跳过；各命令及`git diff --check`均退出0，只有全树既有LF→CRLF警告。未跟踪的两份新审阅文本已分别读取；两批Git未忽略清单只含各自审阅，公开原始txt/json未列入。检索失败、页面壳及来源内日期/额度冲突见新审阅，不把离线测试通过当成这些事项已解决。
+
+并行状态补记：研究期间共享工作树HEAD从`9fd5f5b`变为`82fbc69`，并检测到来源测试文件相对首次复跑哈希变化；本轮父/子任务未执行暂存、提交或推送，保留外部变更。收尾再次运行全量测试，60项59通过1同因跳过、4.733秒，退出0；此次命令前后HEAD均`82fbc69`，主来源工具及其测试文件各自SHA256保持相同。这里只确认该窗口与所述文件，不承诺跨会话锁定或把并行工具改动归为本次规则研究实现。
+
+## 11. 抖音专题拆分与离线回归（2026-10-22）
+
+本轮仅文档职责迁移、导航及静态／离线回归，不沿用上节60项历史结果。接手HEAD为`82fbc69a422b454b472cf838e81e80fe4b71b4ee`；已有未提交来源补读、平台导航及四篇抖音专题草稿，均不归为本轮新建。未暂存、提交或推送；不修改小红书内容、旧审阅或冻结包。
+
+[原指南](../platforms/douyin/guide.md)五段按原文字逐段比对后迁入[安全](../platforms/douyin/security.md)、[协作](../platforms/douyin/collaboration.md)、[生命周期](../platforms/douyin/lifecycle.md)、[权利隐私](../platforms/douyin/rights-and-privacy.md)、[规则复核](../platforms/douyin/policy-review.md)，旧标题保留为单向导航；前三个建档／主页／发布入口不变。规则来源仍唯一维护于[证据页](../platforms/douyin/rules.md)；其中本地忽略摘要的链接改指版本化审阅说明，不强制纳入原始全文。
+
+测试白名单只补五个专题，保留原有方案不等于账号事实、唯一主档、unknown和旧标题断言；新增同序专题文件路由、旧入口单向迁移及迁移后关键边界字面回归。它们不是完整语义或平台资格验证。
+
+环境：Python 3.11.9；`platform.platform()`为`Windows-10-10.0.26300-SP0`。命令在仓库根目录执行，以`-B`禁用字节码写入；本轮日志及对比快照只留于忽略的本地目录，不纳入Git。
+
+```text
+python -B -m unittest discover -s tests -v
+python -B tests/replay_scenarios.py
+python -B tests/harness_baseline.py verify --manifest tests/fixtures/harness-baseline.json --archive tests/fixtures/harness-baseline.zip
+git diff --check
+```
+
+本次实际结果（非继承历史）：
+
+- 全量单元测试：**62项，61通过、0失败、1跳过**，首跑4.567秒、最终复跑4.478秒，均退出0。唯一跳过为`test_symbolic_link_is_not_followed`，原因为`OS did not permit creation of test symlink`；不称真实符号链接隔离通过。
+- 可靠性复跑：R01–R07全部符合原预期，退出0；R01的检查器退出1及故障注入中的partial／conflict是预期场景，不是复跑失败。测试副本写入／模拟OSError不等于真实平台、生产保存器或新宿主保存测试。
+- 冻结基线：35文件验证通过，退出0，内容SHA256为`a9e9399b68fef9a6f47f4643be2a09d8cd96740613864c6b9c32b7f972954716`；未修改冻结manifest或archive。
+- 显式导航检查：在交付白名单上再补两平台八文档，`python -B -`运行下段只读代码，30文档、499本地链接、149锚点无缺文件／缺锚点，48外部URL跳过不访问。全部9个原指南标题保留；五段原正文与迁入目标再次逐字比对一致，不只比文件数。
+- 新增／未跟踪文件：八份抖音文档与两份交付／导航测试均逐个运行`git diff --no-index --check -- NUL <file>`并检查尾随空白及文件结尾；10份无空白诊断。每项退出1来自`--no-index`隐含的差异退出码（空设备与非空文件不同），不是测试通过码；同时要求诊断为空、独立空白检查通过。仅有LF→CRLF提示。
+
+导航检查可复现输入（复用现有检查器，不新增扫描器）：
+
+```python
+import sys
+sys.path.insert(0, 'tests')
+import test_douyin_delivery as nav
+names = ('README', 'rules', 'guide', 'security', 'collaboration', 'lifecycle',
+         'rights-and-privacy', 'policy-review')
+nav.DOCUMENTS = list(dict.fromkeys(nav.DOCUMENTS + [
+    f'platforms/{platform}/{name}.md'
+    for platform in ('xiaohongshu', 'douyin') for name in names
+]))
+counts, problems = nav.check_navigation()
+print(counts, problems)
+raise SystemExit(bool(problems))
+```
+
+过程中的失败与修正也保留：首次迁移脚本因末段分隔词写错而在写前退出；修正后写回被工作区沙箱拒绝，ACL技能加载亦失败（ENOENT），同一命令获准重跑后成功，最后再次逐字复核。首次定向导航测试6项中2项失败（3个子断言）：新断言错误要求小红书所有交叉链接都落同一文件，另有权利页缺英文unknown字样；现保留主入口归属校验、显式允许其原有两种跨专题链接，并将权利页未核验项注明unknown。未删除或放宽原有边界断言；交付定向命令因前项非零当次未执行，后续已在全量中实际通过。首次`git diff --check`检出本节编辑时的EOF空行，续写后修正；最终结果另记。
+
+局限：行内本地链接和简单标题近似检查不覆盖复杂Markdown、HTML、浏览器渲染或外部URL可达性；字面断言不证明语义完备、来源现行或账号资格。未新增联网研究、模型业务测试、工具保存测试或真实注册、发布、协作、申诉、投诉、恢复、注销操作；没有增长／不限流／申诉成功／恢复保证。历史失败、冲突和unknown均不因离线通过而升级。
+
+最终差异核对按接手快照而非单看Git总diff：本轮修改8个已有文件，仅新建规则复核专题；四篇既有专题中安全、协作、生命周期正文未改，权利页补身份关联边界。小红书、旧证据、工具及冻结文件与接手哈希一致。首次比对脚本误将Git仍列出的接手既有删除路径当作新增候选而断言失败；补上现存文件过滤后通过，未恢复、删除或改写该路径。最终`git diff --check`与单独新增文件空白检查均无错误，暂存区仍为空、HEAD未变；本轮到此交用户审阅，不自动提交或推送。
